@@ -10,7 +10,9 @@ namespace Trader.Models
     {
         [JsonProperty(PropertyName = "id")]
         public string Id { get; set; }
+        [JsonProperty(PropertyName = "buy")]
         public int Buy { get; set; }
+        [JsonProperty(PropertyName = "buyFrom")]
         public Producer[] BuyFrom { get; set; }
     }
 }
