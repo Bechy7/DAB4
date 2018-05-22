@@ -10,3 +10,6 @@ er lovligligt i forhold til gældende statslig regulering og lovgivning af elfors
 
 SMART METER??
 
+- trader: skal vi lave noget ekstra som laver egentlige handler og gemmer dem et sted eller hvordan?
+lige nu indeholder den en liste af producer/consumer som hver især køber eller sælger noget
+
