@@ -74,7 +74,7 @@ namespace SmartMeter
         static async Task<HttpStatusCode> DeleteTradeAsync(string timestamp)
         {
             HttpResponseMessage response = await client.DeleteAsync(
-                $"api/products/{timestamp}");
+                $"api/Trades/{timestamp}");
             return response.StatusCode;
         }
 
@@ -93,6 +93,48 @@ namespace SmartMeter
 
             try
             {
+                List<Trade> allTrades = new List<Trade>(45);
+
+                int timeStart = 0;
+                int timeEnd = timeStart + 1;
+                int prosumerId = 0;
+
+                Random rnd = new Random();
+                for (int i = 0; i < allTrades.Capacity; i++)
+                {
+                    Trade trade = new Trade();
+
+                    int numberOfProducers = rnd.Next(1, 21);
+                    int numberOfConsumers = rnd.Next(1, 21);
+
+                    Producer[] producers = new Producer[numberOfProducers];
+                    Consumer[] consumers = new Consumer[numberOfConsumers];
+
+                    for (int j = 0; j < numberOfProducers; j++)
+                    {
+                        producers[j].Id = prosumerId.ToString();
+                        producers[j].Sell = rnd.Next(1, 15);
+                    }
+
+                    for (int j = 0; j < numberOfConsumers; j++)
+                    {
+                        consumers[j].Id = (++prosumerId).ToString();
+                        consumers[j].Buy = rnd.Next(1, 15);
+
+                        int numberToBuyFrom = rnd.Next(1, 5);
+
+                        consumers[j].BuyFrom = new Producer[numberToBuyFrom];
+
+                        for (int m = 0; m < numberToBuyFrom; m++)
+                        {
+                            consumers[j].BuyFrom[m].
+
+                        }
+                    }
+
+                    trade.Id = $"{timeStart}:00-{timeEnd}:00";
+                    trade.Consumers
+                }
                 // Create a new product
                 Trade trade = new Trade
                 {
@@ -129,27 +171,28 @@ namespace SmartMeter
                 string id = "1600-1615";
                 var t = await GetTradeAsync(id);
                 Console.WriteLine(client.BaseAddress.AbsoluteUri);
+                Console.WriteLine("Before update: ");
                 ShowTrade(t);
-                
 
-                //var statusCode = await DeleteTradeAsync(trade.Id);
-                //Console.WriteLine($"Deleted (HTTP Status = {(int)statusCode})");
 
-                ////var url = await CreateTradeAsync(trade);
-                ////Console.WriteLine($"Created at {url}");
+                //var statusCode = await DeleteTradeAsync(id);
+                //Console.WriteLine($"Deleted (HTTP Status = {(int)statusCode}");
 
-                ////Get the product
+                //var url = await CreateTradeAsync(trade);
+                //Console.WriteLine($"Created at {url.AbsoluteUri}");
+
+                //Get the product
 
 
                 ////Console.WriteLine(client.BaseAddress.AbsoluteUri);
                 ////var t = await GetTradeAsync(url.PathAndQuery);
                 ////ShowTrade(trade);
 
-                //// Update the product
+                // Update the product
 
-                //Console.WriteLine("Consumers buy value..");
-                //trade.Consumers[0].Buy = 2;
-                //await UpdateTradeAsync(trade);
+                Console.WriteLine("Consumers buy value..");
+                t.Consumers[0].Buy = 2;
+                await UpdateTradeAsync(t);
 
                 //// Get the updated product
                 //trade = await GetTradeAsync(url.PathAndQuery);
