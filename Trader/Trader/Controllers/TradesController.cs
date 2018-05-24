@@ -12,33 +12,6 @@ namespace Trader.Controllers
 {
     public class TradesController : ApiController
     {
-        //Trade[] trades =
-        //{
-        //    new Trade
-        //    {
-        //        Consumers = new[]
-        //        {
-        //            new Consumer
-        //            {
-        //                Buy = 10,
-        //                BuyFrom = new[]
-        //                {
-        //                    new Producer
-        //                    {
-        //                        Id = "1",
-        //                        Sell = 7
-        //                    },
-        //                    new Producer
-        //                    {
-        //                        Id = "2",
-        //                        Sell = 10
-        //                    }
-        //                },
-        //                Id = "3"
-        //            }
-        //        }
-        //    }
-        //};
         // GET: Trade
         public async Task<IEnumerable<Trade>> GetTrades()
         {
@@ -58,18 +31,18 @@ namespace Trader.Controllers
         }
 
         [ResponseType(typeof(Trade))]
-        public async Task<IHttpActionResult> PutPerson(Trade person)
+        public async Task<IHttpActionResult> PutTrade(Trade person)
         {
             return await DocumentDBRepository<Trade>.Put(person);
         }
 
         [ResponseType(typeof(Trade))]
-        public async Task<IHttpActionResult> PostPerson(Trade person)
+        public async Task<IHttpActionResult> PostTrade(Trade person)
         {
             return await DocumentDBRepository<Trade>.Post(person);
         }
 
-        public async Task<IHttpActionResult> DeletePerson(string id)
+        public async Task<IHttpActionResult> DeleteTrade(string id)
         {
             return await DocumentDBRepository<Trade>.Delete(id);
         }

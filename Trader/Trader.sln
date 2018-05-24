@@ -5,6 +5,8 @@ VisualStudioVersion = 15.0.27428.2037
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Trader", "Trader\Trader.csproj", "{B9FD12B7-FA80-4DA1-8C70-CC27356F964B}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SmartMeter", "SmartMeter\SmartMeter.csproj", "{6BDDAD06-B7E1-4F11-8C1A-61A653A65B3E}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{B9FD12B7-FA80-4DA1-8C70-CC27356F964B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B9FD12B7-FA80-4DA1-8C70-CC27356F964B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B9FD12B7-FA80-4DA1-8C70-CC27356F964B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6BDDAD06-B7E1-4F11-8C1A-61A653A65B3E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6BDDAD06-B7E1-4F11-8C1A-61A653A65B3E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6BDDAD06-B7E1-4F11-8C1A-61A653A65B3E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6BDDAD06-B7E1-4F11-8C1A-61A653A65B3E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
