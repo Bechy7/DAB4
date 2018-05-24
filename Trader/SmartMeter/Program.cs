@@ -83,6 +83,114 @@ namespace SmartMeter
             RunAsync().GetAwaiter().GetResult();
         }
 
+        static Trade[] GenerateTradesForOneDay()
+        {
+            Trade[] allTrades = new Trade[24];
+
+            int timeStart = 0;
+            int timeEnd = timeStart + 1;
+            int prosumerId = -1;
+
+            // Very random seed
+            Random rnd = new Random(Guid.NewGuid().GetHashCode());
+
+            for (int i = 0; i < allTrades.Length; i++)
+            {
+                Trade trade = new Trade
+                {
+                    Id = $"{timeStart}:00-{timeEnd}:00"
+                };
+
+                // Create number of Prosumer (1-20 of each)
+                int numberOfProducers = rnd.Next(1, 21);
+                int numberOfConsumers = rnd.Next(1, 21);
+
+                Producer[] producers = new Producer[numberOfProducers];
+                Consumer[] consumers = new Consumer[numberOfConsumers];
+
+                // Initiate all producers with Sell value of 1-15
+                for (int j = 0; j < numberOfProducers; j++)
+                {
+                    var prod = new Producer
+                    {
+                        Id = (++prosumerId).ToString(),
+                        Sell = rnd.Next(1, 16)
+                    };
+
+                    producers[j] = prod;
+                }
+
+                // Initiate all consumers with Buy value of 1-15
+                for (int j = 0; j < numberOfConsumers; j++)
+                {
+                    var con = new Consumer
+                    {
+                        Id = (++prosumerId).ToString(),
+                        Buy = rnd.Next(1, 16)
+                    };
+
+                    consumers[j] = con;
+
+                    // Give 1-5 random producers to buy from
+                    int numberToBuyFrom = rnd.Next(1, 6);
+
+                    if (numberOfProducers < numberToBuyFrom)
+                        numberToBuyFrom = numberOfProducers;
+
+                    consumers[j].BuyFrom = new Producer[numberToBuyFrom];
+
+                    // Initiate "BuyFrom" with random producers
+                    for (int m = 0; m < numberToBuyFrom; m++)
+                    {
+                        // Index 1 - numberOfProducers
+                        int producerIndex = rnd.Next(0, numberOfProducers);
+
+                        // Check first that it does not exist in the list before inserting
+                        var producerToCheck = producers[producerIndex];
+
+                        bool isInList = false;
+
+                        do
+                        {
+                            // Loop through list to check if in list
+                            for (int k = 0; k < m; k++)
+                            {
+                                // If exist, do not insert
+                                if (producerToCheck.Id == consumers[j].BuyFrom[k].Id)
+                                {
+                                    // Generate new index of a producer and try insert again
+                                    producerIndex = rnd.Next(0, numberOfProducers);
+                                    producerToCheck = producers[producerIndex];
+                                    isInList = true;
+                                    break;
+                                }
+
+                                isInList = false;
+
+                            }
+
+                        } while (isInList);
+
+                       consumers[j].BuyFrom[m] = producers[producerIndex];
+                    }
+                }
+
+                // Reset prosumer ID
+                prosumerId = -1;
+
+                // Initialize trade with prosumers
+                trade.Consumers = consumers;
+                trade.Producers = producers;
+
+                allTrades[i] = trade;
+
+                // Increment timestamp
+                timeStart++;
+                timeEnd++;
+            }
+
+            return allTrades;
+        }
         static async Task RunAsync()
         {
             // Update port # in the following line.
@@ -93,93 +201,58 @@ namespace SmartMeter
 
             try
             {
-                List<Trade> allTrades = new List<Trade>(45);
 
-                int timeStart = 0;
-                int timeEnd = timeStart + 1;
-                int prosumerId = 0;
-
-                Random rnd = new Random();
-                for (int i = 0; i < allTrades.Capacity; i++)
-                {
-                    Trade trade = new Trade();
-
-                    int numberOfProducers = rnd.Next(1, 21);
-                    int numberOfConsumers = rnd.Next(1, 21);
-
-                    Producer[] producers = new Producer[numberOfProducers];
-                    Consumer[] consumers = new Consumer[numberOfConsumers];
-
-                    for (int j = 0; j < numberOfProducers; j++)
-                    {
-                        producers[j].Id = prosumerId.ToString();
-                        producers[j].Sell = rnd.Next(1, 15);
-                    }
-
-                    for (int j = 0; j < numberOfConsumers; j++)
-                    {
-                        consumers[j].Id = (++prosumerId).ToString();
-                        consumers[j].Buy = rnd.Next(1, 15);
-
-                        int numberToBuyFrom = rnd.Next(1, 5);
-
-                        consumers[j].BuyFrom = new Producer[numberToBuyFrom];
-
-                        for (int m = 0; m < numberToBuyFrom; m++)
-                        {
-                            consumers[j].BuyFrom[m].
-
-                        }
-                    }
-
-                    trade.Id = $"{timeStart}:00-{timeEnd}:00";
-                    trade.Consumers
-                }
                 // Create a new product
-                Trade trade = new Trade
-                {
-                    Id = "1600-1615",
-                    Consumers = new[]
-                    {
-                        new Consumer
-                        {
-                            Id = "1",
-                            Buy = 10,
-                            BuyFrom = new[]
-                            {
-                                new Producer
-                                {
-                                    Id = "2",
-                                    Sell = 15
-                                }
-                            }
-                        }
-                    },
-                    Producers = new[]
-                    {
-                        new Producer()
-                        {
-                            Id = "2",
-                            Sell = 15
-                        }
-                    }
-                };
+                //Trade trade = new Trade
+                //{
+                //    Id = "1600-1615",
+                //    Consumers = new[]
+                //    {
+                //        new Consumer
+                //        {
+                //            Id = "1",
+                //            Buy = 10,
+                //            BuyFrom = new[]
+                //            {
+                //                new Producer
+                //                {
+                //                    Id = "2",
+                //                    Sell = 15
+                //                }
+                //            }
+                //        }
+                //    },
+                //    Producers = new[]
+                //    {
+                //        new Producer()
+                //        {
+                //            Id = "2",
+                //            Sell = 15
+                //        }
+                //    }
+                //};
 
 
                 // Delete the product
 
-                string id = "1600-1615";
-                var t = await GetTradeAsync(id);
-                Console.WriteLine(client.BaseAddress.AbsoluteUri);
-                Console.WriteLine("Before update: ");
-                ShowTrade(t);
+                //string id = "1600-1615";
+                //var t = await GetTradeAsync(id);
+                //Console.WriteLine(client.BaseAddress.AbsoluteUri);
+                //Console.WriteLine("Before update: ");
+                //ShowTrade(t);
 
 
                 //var statusCode = await DeleteTradeAsync(id);
                 //Console.WriteLine($"Deleted (HTTP Status = {(int)statusCode}");
+                var trades = GenerateTradesForOneDay();
 
-                //var url = await CreateTradeAsync(trade);
-                //Console.WriteLine($"Created at {url.AbsoluteUri}");
+                foreach (var t in trades)
+                {
+                    var url = await CreateTradeAsync(t);
+                    //Console.WriteLine($"Created at {url.AbsoluteUri}");
+                }
+
+                Console.WriteLine("Done");
 
                 //Get the product
 
@@ -190,9 +263,9 @@ namespace SmartMeter
 
                 // Update the product
 
-                Console.WriteLine("Consumers buy value..");
-                t.Consumers[0].Buy = 2;
-                await UpdateTradeAsync(t);
+                //Console.WriteLine("Consumers buy value..");
+                //t.Consumers[0].Buy = 2;
+                //await UpdateTradeAsync(t);
 
                 //// Get the updated product
                 //trade = await GetTradeAsync(url.PathAndQuery);
