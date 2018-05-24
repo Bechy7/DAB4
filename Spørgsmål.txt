@@ -1,5 +1,15 @@
-- vinduer i trader info? 96 vinduer? hvordan?
+- unit of work til prosumer til at kunne tilføje flere huse? ..
+ -- klasse for hver tabel som alligevel er helt ens?
 
+Power Distributor/Smart Grid Trader. Systemet som forsyningsselskabet bag Mini Smart Grid bruger til at overvåge, 
+styre og kontrollere Smart Grid. Trader delen står for at håndtere det indbyrdes salg mellem de enkelte Prosumers.
+ At det ikke er en direkte handel mellem den enkelte Prosumer skyldes skyldes at det ikke er 
+er lovligligt i forhold til gældende statslig regulering og lovgivning af elforsyningen.
 
+-- skal vi håndtere dette?
 
+SMART METER??
+
+- trader: skal vi lave noget ekstra som laver egentlige handler og gemmer dem et sted eller hvordan?
+lige nu indeholder den en liste af producer/consumer som hver især køber eller sælger noget
 
