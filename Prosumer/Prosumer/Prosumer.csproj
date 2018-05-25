@@ -51,9 +51,35 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="C00_00.cs" />
+    <Compile Include="C01_00.cs" />
+    <Compile Include="C02_00.cs" />
+    <Compile Include="C03_00.cs" />
+    <Compile Include="C04_00.cs" />
+    <Compile Include="C05_00.cs" />
+    <Compile Include="C06_00.cs" />
+    <Compile Include="C07_00.cs" />
+    <Compile Include="C08_00.cs" />
+    <Compile Include="C09_00.cs" />
+    <Compile Include="C10_00.cs" />
+    <Compile Include="C11_00.cs" />
+    <Compile Include="C12_00.cs" />
+    <Compile Include="C13_00.cs" />
+    <Compile Include="C14_00.cs" />
+    <Compile Include="C15_00.cs" />
+    <Compile Include="C16_00.cs" />
+    <Compile Include="C17_00.cs" />
+    <Compile Include="C18_00.cs" />
+    <Compile Include="C19_00.cs" />
+    <Compile Include="C20_00.cs" />
+    <Compile Include="C21_00.cs" />
+    <Compile Include="C22_00.cs" />
+    <Compile Include="C23_00.cs" />
+    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ProsumerContext.cs" />
+    <Compile Include="Prosumers.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
