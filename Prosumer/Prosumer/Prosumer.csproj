@@ -75,6 +75,10 @@
     <Compile Include="C21_00.cs" />
     <Compile Include="C22_00.cs" />
     <Compile Include="C23_00.cs" />
+    <Compile Include="Migrations\201805251533392_Migration.cs" />
+    <Compile Include="Migrations\201805251533392_Migration.Designer.cs">
+      <DependentUpon>201805251533392_Migration.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -84,6 +88,11 @@
   <ItemGroup>
     <None Include="App.config" />
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\201805251533392_Migration.resx">
+      <DependentUpon>201805251533392_Migration.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
