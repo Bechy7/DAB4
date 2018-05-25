@@ -12,6 +12,9 @@ namespace Trader.Models
         public string Id { get; set; }
         [JsonProperty(PropertyName = "sell")]
         public int Sell { get; set; }
+        [JsonProperty(PropertyName = "type")]
+        public string Type{ get; set; }
+
         // public Consumer[] SellTo { get; set; } // Remove this?
     }
 }
