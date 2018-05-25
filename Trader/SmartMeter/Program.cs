@@ -17,21 +17,7 @@ namespace SmartMeter
     // https://docs.microsoft.com/en-us/aspnet/web-api/overview/advanced/calling-a-web-api-from-a-net-client
     public class Program
     {
-        //static async Task Main(string[] args)
-        //{
-        //static string url = "http://localhost:60490/api/Trades";
-
         static HttpClient client = new HttpClient();
-
-        //static void ShowTrade(Trade trade)
-        //{
-        //    Console.WriteLine($"Timestamp: {trade.Id}");
-
-        //    foreach (var tradeConsumer in trade.Consumers)
-        //    {
-        //        Console.WriteLine("ID: " + tradeConsumer.Id + ", Buy: " + tradeConsumer.Buy);
-        //    }
-        //}
 
         static async Task<Uri> CreateTradeAsync(Trade trade)
         {
@@ -51,9 +37,6 @@ namespace SmartMeter
             if (response.IsSuccessStatusCode)
             {
                 trades = await response.Content.ReadAsAsync<List<Trade>>();
-                //var response = await response.Content.ReadAsAsync<Trade>():
-                //var hej = await response.Content.ReadAsStringAsync();
-                //Console.WriteLine(hej2[0]);
             }
 
             return trades[0];
