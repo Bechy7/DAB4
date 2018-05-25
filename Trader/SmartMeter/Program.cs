@@ -307,8 +307,6 @@ namespace SmartMeter
 
             try
             {
-                //List<Trade> trades = new List<Trade>();
-
                 while (true)
                 {
                     Console.WriteLine("Press U to update the day");
@@ -329,81 +327,6 @@ namespace SmartMeter
                         Console.WriteLine("Done updating. Check database for new values");
                     }
                 }
-
-                //var Trade = new Trade()
-                //{
-                //    Id = "1:00-2:00"
-                //};
-
-                //var t = new Trade()
-                //{
-                //    Id = "100-200"
-                //};
-
-                ////t = await GetTradeAsync("100-200");
-                //t.PowerSourceOrDestination = "hehdasde";
-                //await UpdateTradeAsync(t);
-                //Console.WriteLine(t.Id);
-
-                //for (int i = 0; i < 24; i++)
-                //{
-                //    int timeStart = 0;
-                //    int timeEnd = timeStart + 1;
-
-                //    string timestamp = $"{timeStart}:00-{timeEnd}:00";
-
-                //    var t = await GetTradeAsync(timestamp);
-
-                //    await UpdateTradeAsync(t);
-
-                //}
-
-                //// Very random seed
-                //Random rnd = new Random(Guid.NewGuid().GetHashCode());
-
-                //for (int i = 0; i < allTrades.Length; i++)
-                //{
-                //    Trade trade = new Trade
-                //    {
-                //        Id = $"{timeStart}:00-{timeEnd}:00"
-                //    };
-                //    //string id = "1600-1615";
-                //    var t = await GetTradeAsync(id);
-                //Console.WriteLine(client.BaseAddress.AbsoluteUri);
-                //Console.WriteLine("Before update: ");
-                //ShowTrade(t);
-
-
-                //var statusCode = await DeleteTradeAsync(id);
-                //Console.WriteLine($"Deleted (HTTP Status = {(int)statusCode}");
-                //var trades = GenerateTradesForOneDay();
-
-                //foreach (var t in trades)
-                //{
-                //    var url = await CreateTradeAsync(t);
-                //    //Console.WriteLine($"Created at {url.AbsoluteUri}");
-                //}
-
-                //Console.WriteLine("Done");
-
-                //Get the product
-
-
-                ////Console.WriteLine(client.BaseAddress.AbsoluteUri);
-                ////var t = await GetTradeAsync(url.PathAndQuery);
-                ////ShowTrade(trade);
-
-                // Update the product
-
-                //Console.WriteLine("Consumers buy value..");
-                //t.Consumers[0].Buy = 2;
-                //await UpdateTradeAsync(t);
-
-                //// Get the updated product
-                //trade = await GetTradeAsync(url.PathAndQuery);
-                //ShowTrade(trade);
-
-
             }
             catch (Exception e)
             {
