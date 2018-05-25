@@ -194,8 +194,6 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Models\Prosumer.cs" />
-    <Compile Include="Models\SmartMeter.cs" />
     <Compile Include="Models\Trade.cs" />
     <Compile Include="Models\Consumer.cs" />
     <Compile Include="Models\Producer.cs" />

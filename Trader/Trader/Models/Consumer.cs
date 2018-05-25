@@ -14,5 +14,7 @@ namespace Trader.Models
         public int Buy { get; set; }
         [JsonProperty(PropertyName = "buyFrom")]
         public Producer[] BuyFrom { get; set; }
+        [JsonProperty(PropertyName = "type")]
+        public string Type { get; set; }
     }
 }
